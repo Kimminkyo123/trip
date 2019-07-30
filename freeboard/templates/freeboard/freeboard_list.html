@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}freeboard_list.html{% endblock %}
+
+{% load staticfiles %}
+
+{% block extrastyle %}
+{% endblock %}
+
+{% block content %}
+<br><br><br>
+<div id="content">
+
+    <h1>자유게시판</h1>
+    
+    {% for freeboard in object_list %}
+        <h2><a href='{{ freeboard.get_absolute_url }}'>{{ freeboard.title }}</a></h2>
+        {{ freeboard.upload_date|date:"N d, Y" }}
+        <p>{{ freeboard.body}}</p>
+       <img class="recent-work-inner",src= "{{freeboard.image.url}}">
+    {% endfor %}
+    
+
+</div>
+{% endblock %}
